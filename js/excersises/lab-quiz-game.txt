@@ -1,0 +1,53 @@
+** start of script.js **
+
+let questions = [
+  {
+    category: "Math",
+    question: "What is 5 + 3?",
+    choices: ["6", "8", "10"],
+    answer: "8"
+  },
+  {
+    category: "Science",
+    question: "Which planet is known as the Red Planet?",
+    choices: ["Earth", "Mars", "Venus"],
+    answer: "Mars"
+  },
+  {
+    category: "History",
+    question: "Who was the first President of the United States?",
+    choices: ["George Washington", "Abraham Lincoln", "Thomas Jefferson"],
+    answer: "George Washington"
+  },
+  {
+    category: "Geography",
+    question: "Which is the largest ocean on Earth?",
+    choices: ["Atlantic Ocean", "Indian Ocean", "Pacific Ocean"],
+    answer: "Pacific Ocean"
+  },
+  {
+    category: "Sports",
+    question: "How many players are there in a soccer team on the field?",
+    choices: ["9", "11", "13"],
+    answer: "11"
+  }
+];
+
+function getRandomQuestion(arr){
+  let a=Math.trunc(Math.random()*arr.length);
+  return arr[a];
+}
+
+function getRandomComputerChoice(arr){
+  let a=Math.trunc(Math.random()*arr.length);
+  return arr[a];
+}
+function getResults(ques,ans){
+  if(ques.answer === ans)
+  return "The computer's choice is correct!";
+  else
+  return `The computer's choice is wrong. The correct answer is: ${ques.answer}`;
+}
+
+** end of script.js **
+

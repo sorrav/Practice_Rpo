@@ -1,0 +1,45 @@
+** start of script.js **
+
+function findLongestWordLength(str){
+  let count=0;
+  let maxx=0;
+  let currentWord="";
+  let longestWord="";
+  str=str.toLowerCase();
+  for(let ch of str){
+    if(ch >='a' &&  ch<='z'){
+       count++;
+       currentWord += ch;
+  }
+    else{
+      if(count>maxx){
+        maxx=count;
+       longestWord=currentWord;
+      }
+       currentWord="";
+       count=0;
+    }
+  }
+  if(count>maxx){
+    longestWord=currentWord;
+  }
+  return longestWord.length;
+}
+
+let one = findLongestWordLength("The quick brown fox jumped over the lazy dog");
+
+console.log(
+`In sentence : The quick brown fox jumped over the lazy dog.
+longest word: ${one}
+length: ${one.length}`);
+
+let two = findLongestWordLength("What is the average airspeed velocity of an unladen swallow");
+
+console.log(
+`In sentence : The quick brown fox jumped over the lazy dog.
+longest word: ${two}
+length: ${two.length}`);
+
+
+** end of script.js **
+

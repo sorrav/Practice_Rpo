@@ -1,0 +1,16 @@
+** start of script.js **
+
+function maskEmail(email){
+ let a=email.indexOf("@");
+ let [username,domain] = email.split("@");
+ if(email.length <=2) return email;
+ 
+ let maski = username[0] + "*".repeat(username.length-2) + username[username.length-1];
+
+ return maski+"@"+domain;
+}
+let email = "soravjg404@gmail.com";
+console.log(maskEmail(email));
+
+** end of script.js **
+

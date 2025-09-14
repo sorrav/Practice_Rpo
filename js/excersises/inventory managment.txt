@@ -1,0 +1,93 @@
+let inventory = [];
+
+function findProductIndex(name) {
+  let newName = name.toLowerCase();
+  for (let i = 0; i < inventory.length; i++) {
+    if (inventory[i]?.name === newName) return i;
+  }
+  return -1;
+}
+
+function addProduct(prod) {
+  let newname = prod.name.toLowerCase();
+  let existing = inventory.find(item => item.name === newname);
+
+  if (existing) {
+    existing.quantity += prod.quantity;
+    return `${existing.name} quantity updated`;
+  } else {
+    inventory.push({ ...prod, name: prod.name.toLowerCase() });
+    return `${newname} added to inventory`;
+  }
+}
+
+function removeProduct(nam, quant) {
+  const name = nam.toLowerCase();
+  const exist = inventory.find(item => item.name === name);
+
+  if (!exist) {
+    return `${name} not found`;
+  } else if (exist.quantity < quant) {
+    return `Not enough ${name} available, remaining pieces: ${exist.quantity}`;
+  }
+
+  exist.quantity -= quant;
+  const existInd = inventory.findIndex(item => item.name === name);
+
+  if (exist.quantity === 0) {
+    inventory.splice(existInd, 1);
+  }
+
+  return `Remaining ${name} pieces: ${exist.quantity}`;
+}
+
+
+
+
+console.log(inventory)
+
+console.log(addProduct({name: "FLOUR", quantity: 5}))
+console.log(inventory)
+console.log()
+
+console.log(findProductIndex("flour"));
+console.log(findProductIndex("FloUr"))
+console.log()
+
+console.log(addProduct({name: "FLOUR", quantity: 7}))
+console.log(inventory);
+console.log()
+
+console.log(removeProduct("FLOUR", 5));
+console.log(inventory);
+console.log()
+
+console.log(removeProduct("FLOUR", 10));
+console.log(inventory);
+console.log()
+
+console.log(removeProduct("FLOUR", 2));
+console.log(inventory);
+console.log()
+
+console.log(removeProduct("FLOUR", 5));
+console.log(inventory);
+console.log()
+
+console.log(removeProduct("FLOUR", 5));
+console.log(inventory);
+console.log()
+
+/*
+console.log(addProduct({name: "FLOUR", quantity: 5}))
+console.log(inventory)
+console.log()
+
+console.log(addProduct({name: "dhaniya", quantity: 5}))
+console.log(inventory)
+console.log()
+
+console.log(addProduct({name: "oNiOn", quantity: 10}))
+console.log(inventory)
+console.log()
+*/
